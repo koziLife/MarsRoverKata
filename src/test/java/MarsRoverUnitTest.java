@@ -9,7 +9,6 @@ import static org.junit.Assert.assertThat;
 @RunWith(JUnitParamsRunner.class)
 public class MarsRoverUnitTest {
 
-
     @Test
     @Parameters({
             "R, 0 0 E",
@@ -34,9 +33,37 @@ public class MarsRoverUnitTest {
 
     @Test
     @Parameters({
-            "M, 0 1 N"
+            "M, 0 1 N",
+            "MMMMMM, 0 5 N"
     })
-    public void move_test(String newDirection, String expected) throws Exception {
+    public void move_north_test(String newDirection, String expected) throws Exception {
+        assertThat(new MarsRover().run(newDirection), is(expected));
+    }
+
+    @Test
+    @Parameters({
+            "LLM, 0 0 S",
+            "MLLMM, 0 0 S"
+    })
+    public void move_south_test(String newDirection, String expected) throws Exception {
+        assertThat(new MarsRover().run(newDirection), is(expected));
+    }
+
+    @Test
+    @Parameters({
+            "RM, 1 0 E",
+            "RMMMMMM, 5 0 E"
+    })
+    public void move_east_test(String newDirection, String expected) throws Exception {
+        assertThat(new MarsRover().run(newDirection), is(expected));
+    }
+
+    @Test
+    @Parameters({
+            "RMMLLM, 1 0 W",
+            "LM, 0 0 W"
+    })
+    public void move_west_test(String newDirection, String expected) throws Exception {
         assertThat(new MarsRover().run(newDirection), is(expected));
     }
 }

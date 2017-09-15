@@ -1,6 +1,8 @@
 public class MarsRover {
 
     private Position position = new Position(0, 0, "N");
+    private final static int MAX_X = 5;
+    private final static int MAX_Y = 5;
 
     public String run(String s) {
         for (char c : s.toCharArray()) {
@@ -17,7 +19,14 @@ public class MarsRover {
 
     private void move() {
         if(position.getDirection().equals("N"))
-            position.setY(position.getY() + 1);
+            position.setY(Math.min(position.getY() + 1, MAX_Y));
+        if(position.getDirection().equals("S"))
+            position.setY(Math.max(position.getY() - 1, 0));
+        if(position.getDirection().equals("E"))
+            position.setX(Math.min(position.getX() + 1, MAX_X));
+        if(position.getDirection().equals("W"))
+            position.setX(Math.max(position.getX() - 1, 0));
+
     }
 
     private void turnLeft() {
