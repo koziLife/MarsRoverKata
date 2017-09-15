@@ -14,7 +14,8 @@ public class MarsRoverUnitTest {
 
     @Before
     public void setUp() throws Exception {
-        rover = new MarsRover();
+        Position position = new Position(0, 0, "N");
+        rover = new MarsRover(position);
     }
 
     @Test

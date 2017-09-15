@@ -1,8 +1,12 @@
 public class MarsRover {
 
-    private Position position = new Position(0, 0, "N");
+    private Position position;
     private final static int MAX_X = 5;
     private final static int MAX_Y = 5;
+
+    public MarsRover(Position position) {
+        this.position = position;
+    }
 
     public String run(String s) {
         for (char c : s.toCharArray()) {
