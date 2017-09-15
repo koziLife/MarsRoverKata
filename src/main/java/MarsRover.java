@@ -1,10 +1,10 @@
 public class MarsRover {
 
+    private Grid grid;
     private Position position;
-    private final static int MAX_X = 5;
-    private final static int MAX_Y = 5;
 
-    public MarsRover(Position position) {
+    public MarsRover(Grid grid, Position position) {
+        this.grid = grid;
         this.position = position;
     }
 
@@ -23,13 +23,13 @@ public class MarsRover {
 
     private void move() {
         if(position.getDirection().equals("N"))
-            position.setY(Math.min(position.getY() + 1, MAX_Y));
+            position.setY(Math.min(position.getY() + 1, grid.getMaxY()));
         if(position.getDirection().equals("S"))
-            position.setY(Math.max(position.getY() - 1, 0));
+            position.setY(Math.max(position.getY() - 1, grid.getMinY()));
         if(position.getDirection().equals("E"))
-            position.setX(Math.min(position.getX() + 1, MAX_X));
+            position.setX(Math.min(position.getX() + 1, grid.getMaxX()));
         if(position.getDirection().equals("W"))
-            position.setX(Math.max(position.getX() - 1, 0));
+            position.setX(Math.max(position.getX() - 1, grid.getMinX()));
 
     }
 
