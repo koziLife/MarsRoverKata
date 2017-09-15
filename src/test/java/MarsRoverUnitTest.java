@@ -1,5 +1,6 @@
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -9,6 +10,13 @@ import static org.junit.Assert.assertThat;
 @RunWith(JUnitParamsRunner.class)
 public class MarsRoverUnitTest {
 
+    private MarsRover rover;
+
+    @Before
+    public void setUp() throws Exception {
+        rover = new MarsRover();
+    }
+
     @Test
     @Parameters({
             "R, 0 0 E",
@@ -17,7 +25,7 @@ public class MarsRoverUnitTest {
             "RRRR, 0 0 N"
     })
     public void turn_right_test(String newDirection, String expected) throws Exception {
-        assertThat(new MarsRover().run(newDirection), is(expected));
+        assertThat(rover.run(newDirection), is(expected));
     }
 
     @Test
@@ -28,7 +36,7 @@ public class MarsRoverUnitTest {
             "LLLL, 0 0 N"
     })
     public void turn_left_test(String newDirection, String expected) throws Exception {
-        assertThat(new MarsRover().run(newDirection), is(expected));
+        assertThat(rover.run(newDirection), is(expected));
     }
 
     @Test
@@ -37,7 +45,7 @@ public class MarsRoverUnitTest {
             "MMMMMM, 0 5 N"
     })
     public void move_north_test(String newDirection, String expected) throws Exception {
-        assertThat(new MarsRover().run(newDirection), is(expected));
+        assertThat(rover.run(newDirection), is(expected));
     }
 
     @Test
@@ -46,7 +54,7 @@ public class MarsRoverUnitTest {
             "MLLMM, 0 0 S"
     })
     public void move_south_test(String newDirection, String expected) throws Exception {
-        assertThat(new MarsRover().run(newDirection), is(expected));
+        assertThat(rover.run(newDirection), is(expected));
     }
 
     @Test
@@ -55,7 +63,7 @@ public class MarsRoverUnitTest {
             "RMMMMMM, 5 0 E"
     })
     public void move_east_test(String newDirection, String expected) throws Exception {
-        assertThat(new MarsRover().run(newDirection), is(expected));
+        assertThat(rover.run(newDirection), is(expected));
     }
 
     @Test
@@ -64,6 +72,6 @@ public class MarsRoverUnitTest {
             "LM, 0 0 W"
     })
     public void move_west_test(String newDirection, String expected) throws Exception {
-        assertThat(new MarsRover().run(newDirection), is(expected));
+        assertThat(rover.run(newDirection), is(expected));
     }
 }
