@@ -22,40 +22,53 @@ public class MarsRover {
     }
 
     private void move() {
-        if(position.getDirection().equals("N"))
-            position.setY(Math.min(position.getY() + 1, grid.getMaxY()));
-        if(position.getDirection().equals("S"))
-            position.setY(Math.max(position.getY() - 1, grid.getMinY()));
-        if(position.getDirection().equals("E"))
-            position.setX(Math.min(position.getX() + 1, grid.getMaxX()));
-        if(position.getDirection().equals("W"))
-            position.setX(Math.max(position.getX() - 1, grid.getMinX()));
-
+        switch (position.getDirection()){
+            case "N":
+                position.setY(Math.min(position.getY() + 1, grid.getMaxY()));
+                break;
+            case "S":
+                position.setY(Math.max(position.getY() - 1, grid.getMinY()));
+                break;
+            case "E":
+                position.setX(Math.min(position.getX() + 1, grid.getMaxX()));
+                break;
+            case "W":
+                position.setX(Math.max(position.getX() - 1, grid.getMinX()));
+                break;
+        }
     }
 
     private void turnLeft() {
-        if (position.getDirection().equals("N"))
-            position.setDirection("W");
-        else if (position.getDirection().equals("W"))
-            position.setDirection("S");
-        else if (position.getDirection().equals("S"))
-            position.setDirection("E");
-        else if (position.getDirection().equals("E"))
-            position.setDirection("N");
+        switch (position.getDirection()){
+            case "N":
+                position.setDirection("W");
+                break;
+            case "W":
+                position.setDirection("S");
+                break;
+            case "S":
+                position.setDirection("E");
+                break;
+            case "E":
+                position.setDirection("N");
+                break;
+        }
     }
 
     private void turnRight() {
-        if (position.getDirection().equals("N")) {
-            position.setDirection("E");
-        }
-        else if (position.getDirection().equals("E")){
-            position.setDirection("S");
-        }
-        else if (position.getDirection().equals("S")) {
-            position.setDirection("W");
-        }
-        else if (position.getDirection().equals("W")) {
-            position.setDirection("N");
+        switch (position.getDirection()){
+            case "N":
+                position.setDirection("E");
+                break;
+            case "E":
+                position.setDirection("S");
+                break;
+            case "S":
+                position.setDirection("W");
+                break;
+            case "W":
+                position.setDirection("N");
+                break;
         }
     }
 }

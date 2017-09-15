@@ -12,7 +12,8 @@ public class AcceptanceTest {
     @Test
     @Parameters({
             "5 5\n1 2 N\nLMLMLMLMM, 1 3 N",
-            "5 5\n2 3 W\nLMRMRMMLMMM, 0 4 W"
+            "5 5\n2 3 W\nLMRMRMMLMMM, 0 4 W",
+            "4 8\n1 2 E\nLRMMMLLMRRM, 4 2 E"
     })
     public void acceptance_rover_run_test(String command, String finalPosition) throws Exception {
         NasaLauncher launcher = new NasaLauncher(command);

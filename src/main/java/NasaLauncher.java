@@ -18,26 +18,30 @@ public class NasaLauncher {
         rover = new MarsRover(grid, position);
     }
 
-    private Position createPosition(String line) {
-        return new Position(new Integer(line.split(" ")[0]),
-                    new Integer(line.split(" ")[1]),
-                    line.split(" ")[2]);
+    private Position createPosition(String positionCommand) {
+        String[] parts = positionCommand.split(" ");
+        int x = new Integer(parts[0]);
+        int y =  new Integer(parts[1]);
+        String direction = parts[2];
+        return new Position(x, y, direction);
     }
 
     private Grid createGrid(String line) {
-        return new Grid(new Integer(line.split(" ")[0]),
-                    new Integer(line.split(" ")[1]));
+        int x = new Integer(line.split(" ")[0]);
+        int y = new Integer(line.split(" ")[1]);
+        return new Grid(x, y);
     }
 
     public String launch() {
         return rover.run(getInstruction());
     }
 
-    public String getInstruction() {
+    private String getInstruction() {
         return instruction;
     }
 
-    public void setInstruction(String instruction) {
+    private void setInstruction(String instruction) {
         this.instruction = instruction;
     }
+
 }
